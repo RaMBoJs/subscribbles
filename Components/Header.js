@@ -4,7 +4,7 @@ function Header() {
   return <StyledHeader>Transactions List</StyledHeader>;
 }
 
-const StyledHeader = styled.h3`
+const StyledHeader = styled.h1`
   text-align: center;
   font-weight: bold;
   font-size: 30px;
