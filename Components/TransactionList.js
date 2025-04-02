@@ -6,7 +6,7 @@ export default function TransactionList({ singleObject }) {
     <>
       {/* Hier wird die Catergorys abgefragt und wenn eine true ist wird das dazugehörige Symbol
     eingefügt */}
-      <StyledDiv>
+      <StyledDiv type={singleObject.type}>
         {(singleObject.category === "Groceries" && (
           <StyledIcon src="\salad.svg" alt="bild" width="25" height="25" />
         )) ||
@@ -83,7 +83,8 @@ export default function TransactionList({ singleObject }) {
 }
 
 const StyledDiv = styled.div`
-  background-color: rgb(165, 221, 145);
+  background-color: ${({ type }) =>
+    type === "expense" ? "rgb(244, 123, 123)" : "rgb(165, 221, 145)"};
   width: 360px;
   height: 200px;
   border: solid black 1px;
