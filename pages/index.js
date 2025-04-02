@@ -1,7 +1,13 @@
-export default function HomePage() {
+import TransactionList from "@/Components/TransactionList";
+import Header from "@/Components/Header";
+
+export default function HomePage({ transactionsData }) {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <Header />
+      {transactionsData.map((element) => {
+        return <TransactionList key={element.id} singleObject={element} />;
+      })}
+    </>
   );
 }
