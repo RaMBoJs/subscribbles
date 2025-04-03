@@ -8,7 +8,11 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} transactionsData={transactionsData} />
+      <Component
+        {...pageProps}
+        transactionsData={transactionsData}
+        setTransactionsData={setTransactionsData}
+      />
     </>
   );
 }

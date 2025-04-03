@@ -49,11 +49,7 @@ export default function TransactionCard({ transaction }) {
           <StyledType>{transaction.type}</StyledType>
         </StyledContainer>
 
-        <StyledAmount>
-          {transaction.type === "Expense"
-            ? `-${transaction.amount}$`
-            : `${transaction.amount}$`}
-        </StyledAmount>
+        <StyledAmount>{`${transaction.amount}€`}</StyledAmount>
 
         <StyledDate>{transaction.date}</StyledDate>
       </StyledTransactionCard>
