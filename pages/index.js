@@ -1,4 +1,4 @@
-import TransactionList from "@/Components/TransactionCard";
+import TransactionCard from "@/Components/TransactionCard";
 import Header from "@/Components/Header";
 
 export default function HomePage({ transactionsData }) {
@@ -6,7 +6,7 @@ export default function HomePage({ transactionsData }) {
     <>
       <Header />
       {transactionsData.map((element) => {
-        return <TransactionList key={element.id} transaction={element} />;
+        return <TransactionCard key={element.id} transaction={element} />;
       })}
     </>
   );

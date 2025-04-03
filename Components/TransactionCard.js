@@ -36,19 +36,20 @@ export default function TransactionCard({ transaction }) {
 
   return (
     <>
-      {/* Hier wird die Catergorys abgefragt und wenn eine true ist wird das dazugehörige Symbol
-    eingefügt */}
       <StyledTransactionCard type={transaction.type}>
-        <StyledIcon src={iconImageSrc} alt="bild" width="25" height="25" />
+        <StyledIcon
+          src={iconImageSrc}
+          alt={`${transaction.category}-icon`}
+          width="25"
+          height="25"
+        />
 
-        <StyledFlex>
+        <StyledContainer>
           <StyledCatergory>{transaction.category}</StyledCatergory>
-          <Styledtype>{transaction.type}</Styledtype>
-        </StyledFlex>
+          <StyledType>{transaction.type}</StyledType>
+        </StyledContainer>
 
         <StyledAmount>
-          {/* Ausgabe des Wertes. Wenn der type===Expense ist soll ein minus zeichen zugefügt werden
-              ansonten ohne minus zeichen*/}
           {transaction.type === "Expense"
             ? `-${transaction.amount}$`
             : `${transaction.amount}$`}
@@ -78,7 +79,10 @@ const StyledCatergory = styled.div`
   font-size: 25px;
 `;
 
-const Styledtype = styled.div``;
+const StyledType = styled.div`
+  font-size: 20px;
+  margin-top: 2px;
+`;
 
 const StyledAmount = styled.div`
   font-weight: bold;
@@ -95,6 +99,6 @@ const StyledIcon = styled(Image)`
   margin-left: 310px;
 `;
 
-const StyledFlex = styled.div`
+const StyledContainer = styled.div`
   margin-top: 40px;
 `;
