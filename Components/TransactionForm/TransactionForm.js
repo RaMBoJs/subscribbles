@@ -1,14 +1,13 @@
 import { uid } from "uid";
-import React from "react";
 import categoriesData from "@/assets/categories";
 import {
-  StyledButton,
-  StyledAmount,
-  StyledRadio,
-  StyledDate,
-  StyledCategory,
-  StyledDescription,
-  StyledForm,
+  StyledSubmitButton,
+  StyledAmountInput,
+  StyledTypeRadio,
+  StyledDateInput,
+  StyledCategoryInput,
+  StyledFormHeadline,
+  StyledTransactionForm,
 } from "@/Components/TransactionForm/style-TansactionForm";
 
 const TransactionForm = ({ onAddTransaction }) => {
@@ -34,20 +33,25 @@ const TransactionForm = ({ onAddTransaction }) => {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledDescription>Create a new Transaction Entry</StyledDescription>
+    <StyledTransactionForm onSubmit={handleSubmit}>
+      <StyledFormHeadline>Create a new Transaction Entry</StyledFormHeadline>
 
-      <StyledCategory aria-label="Category input" name="category" required>
+      <StyledCategoryInput aria-label="Category input" name="category" required>
         {categoriesData.map((element) => (
           <option key={element.id} value={element.categoryValue}>
             {element.categoryText}
           </option>
         ))}
-      </StyledCategory>
+      </StyledCategoryInput>
 
-      <StyledDate aria-label="Date input" type="date" name="date" required />
+      <StyledDateInput
+        aria-label="Date input"
+        type="date"
+        name="date"
+        required
+      />
 
-      <StyledAmount
+      <StyledAmountInput
         aria-label="Amount input"
         type="number"
         step="0.01"
@@ -55,7 +59,7 @@ const TransactionForm = ({ onAddTransaction }) => {
         placeholder="Enter Amount"
         required
       />
-      <StyledRadio>
+      <StyledTypeRadio>
         <label htmlFor="radioInputIncome">
           <input
             id="radioInputIncome"
@@ -77,10 +81,10 @@ const TransactionForm = ({ onAddTransaction }) => {
           />
           Expense
         </label>
-      </StyledRadio>
+      </StyledTypeRadio>
 
-      <StyledButton type="submit">Create Transaction</StyledButton>
-    </StyledForm>
+      <StyledSubmitButton type="submit">Create Transaction</StyledSubmitButton>
+    </StyledTransactionForm>
   );
 };
 

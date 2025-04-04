@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledForm = styled.form`
+const StyledTransactionForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -14,15 +14,15 @@ const StyledForm = styled.form`
   padding: min(3rem, 2%);
   border-radius: 20px;
 `;
-const StyledDescription = styled.p`
+const StyledFormHeadline = styled.p`
   grid-area: description;
-   font-size: 1.2rem;
+  font-size: 1.2rem;
   grid-column: 1 / -1;
   place-self: center;
   margin: 6px 6px 10px 6px;
 `;
 
-const StyledCategory = styled.select`
+const StyledCategoryInput = styled.select`
   grid-area: category;
   place-self: center;
   width: 150px;
@@ -31,7 +31,7 @@ const StyledCategory = styled.select`
   border: none;
   margin: 6px;
 `;
-const StyledDate = styled.input`
+const StyledDateInput = styled.input`
   place-self: center;
   grid-area: date;
   width: 150px;
@@ -41,7 +41,7 @@ const StyledDate = styled.input`
   margin: 6px;
 `;
 
-const StyledRadio = styled.div`
+const StyledTypeRadio = styled.div`
   place-self: center;
   grid-area: type;
   display: flex;
@@ -51,7 +51,7 @@ const StyledRadio = styled.div`
   margin: 6px;
 `;
 
-const StyledAmount = styled.input`
+const StyledAmountInput = styled.input`
   place-self: center;
   grid-area: amount;
   width: 150px;
@@ -61,7 +61,7 @@ const StyledAmount = styled.input`
   border: none;
 `;
 
-const StyledButton = styled.button`
+const StyledSubmitButton = styled.button`
   grid-area: button;
   place-self: center;
   width: 150px;
@@ -70,11 +70,11 @@ const StyledButton = styled.button`
   margin: 5px;
 `;
 export {
-  StyledButton,
-  StyledAmount,
-  StyledRadio,
-  StyledDate,
-  StyledCategory,
-  StyledDescription,
-  StyledForm,
+  StyledSubmitButton,
+  StyledAmountInput,
+  StyledTypeRadio,
+  StyledDateInput,
+  StyledCategoryInput,
+  StyledFormHeadline,
+  StyledTransactionForm
 };
