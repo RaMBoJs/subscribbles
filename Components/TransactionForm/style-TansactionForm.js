@@ -16,10 +16,9 @@ const StyledForm = styled.form`
 `;
 const StyledDescription = styled.p`
   grid-area: description;
-  font-size: 20px;
+   font-size: 1.2rem;
   grid-column: 1 / -1;
   place-self: center;
-  font-size: 1.2rem;
   margin: 6px 6px 10px 6px;
 `;
 
@@ -64,7 +63,6 @@ const StyledAmount = styled.input`
 
 const StyledButton = styled.button`
   grid-area: button;
-  grid-column: 1 / -1;
   place-self: center;
   width: 150px;
   height: 40px;

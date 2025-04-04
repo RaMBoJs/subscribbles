@@ -1,6 +1,5 @@
 import { uid } from "uid";
 import React from "react";
-import { useRef } from "react";
 import categoriesData from "@/assets/categories";
 import {
   StyledButton,
@@ -12,11 +11,10 @@ import {
   StyledForm,
 } from "@/Components/TransactionForm/style-TansactionForm";
 
-const TransactionForm = ({ transactionsData, setTransactionsData }) => {
+const TransactionForm = ({ onAddTransaction }) => {
   const identNumber = uid();
-  const formRef = useRef();
 
-  function HandleCreateNewTransaction(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
@@ -26,27 +24,20 @@ const TransactionForm = ({ transactionsData, setTransactionsData }) => {
     }
 
     const requestBody = {
+      ...data,
       id: identNumber,
-      category: data.category,
-      date: data.date,
       amount: parseFloat(data.amount),
-      type: data.type,
     };
 
-    setTransactionsData([requestBody, ...transactionsData]);
-    formRef.current.reset();
+    onAddTransaction(requestBody);
+    event.target.reset();
   }
 
   return (
-    <StyledForm onSubmit={HandleCreateNewTransaction} ref={formRef}>
+    <StyledForm onSubmit={handleSubmit}>
       <StyledDescription>Create a new Transaction Entry</StyledDescription>
 
-      <StyledCategory
-        aria-label="Category input"
-        id="category"
-        name="category"
-        required
-      >
+      <StyledCategory aria-label="Category input" name="category" required>
         {categoriesData.map((element) => (
           <option key={element.id} value={element.categoryValue}>
             {element.categoryText}
@@ -54,28 +45,17 @@ const TransactionForm = ({ transactionsData, setTransactionsData }) => {
         ))}
       </StyledCategory>
 
-      <StyledDate
-        aria-label="Date input"
-        id="date"
-        type="date"
-        name="date"
-        required
-      ></StyledDate>
+      <StyledDate aria-label="Date input" type="date" name="date" required />
 
       <StyledAmount
         aria-label="Amount input"
-        id="amount"
         type="number"
+        step="0.01"
         name="amount"
         placeholder="Enter Amount"
         required
-        inputMode="decimal"
-        pattern="[0-9]*"
-        onInput={(element) => {
-          element.target.value = element.target.value.replace(/[^\d.]/g, "");
-        }}
-      ></StyledAmount>
-      <StyledRadio aria-label="Type selection">
+      />
+      <StyledRadio>
         <label htmlFor="radioInputIncome">
           <input
             id="radioInputIncome"
@@ -99,9 +79,7 @@ const TransactionForm = ({ transactionsData, setTransactionsData }) => {
         </label>
       </StyledRadio>
 
-      <StyledButton aria-label="Create Transaction" type="submit">
-        Create Transaction
-      </StyledButton>
+      <StyledButton type="submit">Create Transaction</StyledButton>
     </StyledForm>
   );
 };
