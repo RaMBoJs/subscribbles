@@ -3,13 +3,8 @@ import styled from "styled-components";
 const StyledIconWrapper = styled.div`
   grid-area: symbol;
   justify-self: end;
-  transform: translate(
-    0px,
-    -28px
-  ); // verschieben vom ursprung in (x position, y position).
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  transform: translate(0px, -28px);
+  text-align: center;
   border: 1px solid black;
   background-color: ${({ $iconColor }) => $iconColor};
   width: 55px;
