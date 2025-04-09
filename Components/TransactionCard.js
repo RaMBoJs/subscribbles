@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Delete from "./Delete/DeleteTransactionCard";
 
-export default function TransactionCard({ transaction }) {
+export default function TransactionCard({ transaction, onDeleteTransaction }) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
     iconImageSrc = "salad.svg";
@@ -52,6 +53,10 @@ export default function TransactionCard({ transaction }) {
         <StyledAmount>{`${transaction.amount}€`}</StyledAmount>
 
         <StyledDate>{transaction.date}</StyledDate>
+        <Delete
+          transactionId={transaction}
+          onDeleteTransaction={onDeleteTransaction}
+        />
       </StyledTransactionCard>
     </>
   );
@@ -88,7 +93,7 @@ const StyledAmount = styled.div`
 `;
 
 const StyledDate = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const StyledIcon = styled(Image)`
