@@ -5,7 +5,7 @@ import Header from "@/Components/Header";
 export default function HomePage({
   transactionsData,
   onAddTransaction,
-  onAddHandleDelete,
+  onDeleteTransaction,
 }) {
   return (
     <>
@@ -17,7 +17,7 @@ export default function HomePage({
           <TransactionCard
             key={element.id}
             transaction={element}
-            onAddHandleDelete={onAddHandleDelete}
+            onDeleteTransaction={onDeleteTransaction}
           />
         );
       })}

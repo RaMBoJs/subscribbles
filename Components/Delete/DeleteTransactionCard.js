@@ -12,7 +12,7 @@ import {
 } from "./style-DeleteTransactionCard";
 import styled from "styled-components";
 
-function DeleteTransactionCard({ transactionId, onAddHandleDelete }) {
+function DeleteTransactionCard({ transactionId, onDeleteTransaction }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -47,7 +47,7 @@ function DeleteTransactionCard({ transactionId, onAddHandleDelete }) {
               </StyledCancelButton>
               <StyledYesButton
                 onClick={() => {
-                  onAddHandleDelete(transactionId);
+                  onDeleteTransaction(transactionId);
                 }}
               >
                 Yes, I am sure

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Delete from "./Delete/DeleteTransactionCard";
 
-export default function TransactionCard({ transaction, onAddHandleDelete }) {
+export default function TransactionCard({ transaction, onDeleteTransaction }) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
     iconImageSrc = "salad.svg";
@@ -55,7 +55,7 @@ export default function TransactionCard({ transaction, onAddHandleDelete }) {
         <StyledDate>{transaction.date}</StyledDate>
         <Delete
           transactionId={transaction}
-          onAddHandleDelete={onAddHandleDelete}
+          onDeleteTransaction={onDeleteTransaction}
         />
       </StyledTransactionCard>
     </>
