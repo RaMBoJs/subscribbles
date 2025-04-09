@@ -9,9 +9,9 @@ export default function App({ Component, pageProps }) {
     setTransactionsData((prev) => [newTransaction, ...prev]);
   }
 
-  function handleDelete(transaction) {
+  function handleAddDelete(transactionId) {
     const filterdTransaction = transactionsData.filter(
-      (element) => transaction.id !== element.id
+      (element) => transactionId.id !== element.id
     );
     setTransactionsData(filterdTransaction);
   }
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         transactionsData={transactionsData}
         onAddTransaction={handleAddTransaction}
-        handleDelete={handleDelete}
+        onAddHandleDelete={handleAddDelete}
       />
     </>
   );

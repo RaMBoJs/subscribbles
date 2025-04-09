@@ -6,18 +6,16 @@ const StyledTrashImage = styled(Image)`
   margin-top: 10px;
 `;
 
-const StyledToggleButton = styled.div`
+const StyledToggle = styled.div`
   background-color: none;
 `;
 
 const StyledDeleteCard = styled.div`
-  position: absolute;
   height: 100px;
   width: 360px;
   background-color: rgb(234, 228, 228);
   border: solid black 1px;
   border-radius: 10px;
-  z-index: 1;
 `;
 
 const StyledCancelButton = styled.button`
@@ -46,7 +44,7 @@ const StyledFlex = styled.div`
 
 export {
   StyledTrashImage,
-  StyledToggleButton,
+  StyledToggle,
   StyledDeleteCard,
   StyledCancelButton,
   StyledYesButton,
