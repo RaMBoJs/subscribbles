@@ -9,13 +9,21 @@ export default function App({ Component, pageProps }) {
     setTransactionsData((prev) => [newTransaction, ...prev]);
   }
 
+  function handleDeleteTransaction(transactionId) {
+    const filterdTransaction = transactionsData.filter(
+      (element) => transactionId.id !== element.id
+    );
+    setTransactionsData(filterdTransaction);
+  }
+
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
         transactionsData={transactionsData}
-       onAddTransaction={handleAddTransaction}
+        onAddTransaction={handleAddTransaction}
+        onDeleteTransaction={handleDeleteTransaction}
       />
     </>
   );
