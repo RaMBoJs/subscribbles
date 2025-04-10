@@ -1,6 +1,7 @@
 import TransactionCard from "@/Components/TransactionCard";
 import TransactionForm from "@/Components/TransactionForm/TransactionForm";
 import Header from "@/Components/Header";
+import NoDataHint from "@/Components/NoDataHint";
 
 export default function HomePage({
   transactionsData,
@@ -11,6 +12,8 @@ export default function HomePage({
     <>
       <Header />
       <TransactionForm onAddTransaction={onAddTransaction} />
+
+      <NoDataHint transactionsData={transactionsData}></NoDataHint>
 
       {transactionsData.map((element) => {
         return (
