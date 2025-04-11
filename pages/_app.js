@@ -4,6 +4,7 @@ import { data } from "@/assets/transactions";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
+  const [showAddNewTransation, setShowAddNewTransaction] = useState(false);
 
   function handleAddTransaction(newTransaction) {
     setTransactionsData((prev) => [newTransaction, ...prev]);
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }) {
         transactionsData={transactionsData}
         onAddTransaction={handleAddTransaction}
         onDeleteTransaction={handleDeleteTransaction}
+        showAddNewTransation={showAddNewTransation}
       />
     </>
   );
