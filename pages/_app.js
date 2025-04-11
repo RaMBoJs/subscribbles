@@ -7,7 +7,8 @@ export default function App({ Component, pageProps }) {
   const [filteredData, setFilteredData] = useState(transactionsData);
 
   function handleAddTransaction(newTransaction) {
-    setTransactionsData((prev) => [newTransaction, ...prev]);
+    setTransactionsData([newTransaction, ...transactionsData]);
+    setFilteredData([newTransaction, ...filteredData]);
   }
 
   function handleDeleteTransaction(transactionId) {
@@ -15,15 +16,16 @@ export default function App({ Component, pageProps }) {
       (element) => transactionId.id !== element.id
     );
     setTransactionsData(filterdTransaction);
+    setFilteredData(filterdTransaction);
   }
   function handleOnChange(event) {
-    let filteredOpjects = transactionsData;
+    let filteredObjects = transactionsData;
     if (event.target.value !== "all") {
-      filteredOpjects = transactionsData.filter(
+      filteredObjects = transactionsData.filter(
         (element) => element.type === event.target.value
       );
     }
-    setFilteredData(filteredOpjects);
+    setFilteredData(filteredObjects);
   }
 
   return (
@@ -33,7 +35,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         transactionsData={filteredData}
         handleOnChange={handleOnChange}
-        onAddTransaction={handleAddTransaction}
+        handleAddTransaction={handleAddTransaction}
         onDeleteTransaction={handleDeleteTransaction}
       />
     </>
