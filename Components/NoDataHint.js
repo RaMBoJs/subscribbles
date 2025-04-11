@@ -3,7 +3,7 @@ import styled from "styled-components";
 function NoDataHint({ transactionsData }) {
   let isVisible = false;
 
-  if (transactionsData <= 0) {
+  if (transactionsData.length === 0) {
     isVisible = !isVisible;
   }
 
