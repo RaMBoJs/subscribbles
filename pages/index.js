@@ -4,7 +4,6 @@ import Header from "@/Components/Header";
 import NoDataHint from "@/Components/NoDataHint";
 import AccountBalance from "@/Components/AccountBalance/AccountBalance";
 
-
 export default function HomePage({
   transactionsData,
   onAddTransaction,
@@ -14,12 +13,12 @@ export default function HomePage({
     <>
       <Header />
 
+      <AccountBalance transactions={transactionsData} />
+
       <TransactionForm onAddTransaction={onAddTransaction} />
 
       <NoDataHint transactionsData={transactionsData}></NoDataHint>
 
-      <AccountBalance transactions={transactionsData} />
-    
       {transactionsData.map((element) => {
         return (
           <TransactionCard
