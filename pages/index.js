@@ -2,6 +2,7 @@ import TransactionCard from "@/Components/TransactionCard";
 import TransactionForm from "@/Components/TransactionForm/TransactionForm";
 import Header from "@/Components/Header";
 import NoDataHint from "@/Components/NoDataHint";
+import AccountBalance from "@/Components/AccountBalance/AccountBalance";
 
 export default function HomePage({
   transactionsData,
@@ -11,6 +12,9 @@ export default function HomePage({
   return (
     <>
       <Header />
+
+      <AccountBalance transactions={transactionsData} />
+
       <TransactionForm onAddTransaction={onAddTransaction} />
 
       <NoDataHint transactionsData={transactionsData}></NoDataHint>

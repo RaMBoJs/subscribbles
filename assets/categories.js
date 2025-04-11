@@ -7,7 +7,7 @@ const categoriesData = [
   { id: 5, categoryValue: "Transportation", categoryText: "Transportation" },
   { id: 6, categoryValue: "Education", categoryText: "Education" },
   { id: 7, categoryValue: "Savings", categoryText: "Savings" },
-  { id: 8, categoryValue: "Restaurant", categoryText: "Restaurants" },
+  { id: 8, categoryValue: "Restaurants", categoryText: "Restaurants" },
   { id: 9, categoryValue: "Groceries", categoryText: "Groceries" },
   { id: 10, categoryValue: "Entertainment", categoryText: "Entertainment" },
 ];
