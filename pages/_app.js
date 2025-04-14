@@ -29,6 +29,7 @@ export default function App({ Component, pageProps }) {
     event.preventDefault();
     const inputOption = event.target.elements.option.value;
     setSelectedFilter(inputOption);
+    event.target.reset();
   }
 
   return (
