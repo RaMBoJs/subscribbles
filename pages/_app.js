@@ -7,18 +7,21 @@ export default function App({ Component, pageProps }) {
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
 
-  let filteredData =
-    selectedFilter === "All"
-      ? transactionsData
-      : transactionsData.filter(
-          (element) => element.category === selectedFilter);
+const filteredData = transactionsData
+  .filter(transaction => selectedFilter === "All" || transaction.category === selectedFilter)
+  .filter(transaction => filterType === "all" || transaction.type === filterType);
+  
+//  let filteredData =
+//    selectedFilter === "All"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (element) => element.category === selectedFilter);
 
-  //double used
-   filteredData =
-    filterType === "all"
-      ? transactionsData
-      : transactionsData.filter(
-          (transactions) => transactions.type === filterType);
+//   filteredData =
+//    filterType === "all"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (transactions) => transactions.type === filterType);
 
   function handleAddTransaction(newTransaction) {
     setTransactionsData([newTransaction, ...transactionsData]);
