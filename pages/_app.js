@@ -1,31 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GlobalStyle from "../styles";
 import { data } from "@/assets/transactions";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
-  const [filteredData, setFilteredData] = useState(transactionsData);
+  const [filterType, setFilterType] = useState("all");
+
+  const filteredData =
+    filterType === "all"
+      ? transactionsData
+      : transactionsData.filter(
+          (transactions) => transactions.type === filterType
+        );
 
   function handleAddTransaction(newTransaction) {
     setTransactionsData([newTransaction, ...transactionsData]);
-    setFilteredData([newTransaction, ...filteredData]);
   }
 
-  function handleDeleteTransaction(transactionId) {
-    const filterdTransaction = transactionsData.filter(
-      (element) => transactionId.id !== element.id
+  function handleDeleteTransaction(transaction) {
+    const filteredTransaction = transactionsData.filter(
+      (element) => transaction.id !== element.id
     );
-    setTransactionsData(filterdTransaction);
-    setFilteredData(filterdTransaction);
+    setTransactionsData(filteredTransaction);
   }
   function handleOnChange(event) {
-    let filteredObjects = transactionsData;
-    if (event.target.value !== "all") {
-      filteredObjects = transactionsData.filter(
-        (element) => element.type === event.target.value
-      );
-    }
-    setFilteredData(filteredObjects);
+    setFilterType(event.target.value);
   }
 
   return (
