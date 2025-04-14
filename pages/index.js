@@ -1,4 +1,4 @@
-import TransactionCard from "@/Components/TransactionCard";
+import TransactionCard from "@/Components/TransactionCard/TransactionCard";
 import TransactionForm from "@/Components/TransactionForm/TransactionForm";
 import Header from "@/Components/Header/Header";
 import AccountBalance from "@/Components/AccountBalance/AccountBalance";
