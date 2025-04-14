@@ -4,17 +4,43 @@ import { data } from "@/assets/transactions";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
-  const [showAddNewTransation, setShowAddNewTransaction] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [filterType, setFilterType] = useState("all");
+
+const filteredData = transactionsData
+  .filter(transaction => selectedFilter === "All" || transaction.category === selectedFilter)
+  .filter(transaction => filterType === "all" || transaction.type === filterType);
+  
+//  let filteredData =
+//    selectedFilter === "All"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (element) => element.category === selectedFilter);
+
+//   filteredData =
+//    filterType === "all"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (transactions) => transactions.type === filterType);
 
   function handleAddTransaction(newTransaction) {
-    setTransactionsData((prev) => [newTransaction, ...prev]);
+    setTransactionsData([newTransaction, ...transactionsData]);
   }
 
-  function handleDeleteTransaction(transactionId) {
-    const filterdTransaction = transactionsData.filter(
-      (element) => transactionId.id !== element.id
+  function handleDeleteTransaction(transaction) {
+    const filteredTransaction = transactionsData.filter(
+      (element) => transaction.id !== element.id
     );
-    setTransactionsData(filterdTransaction);
+    setTransactionsData(filteredTransaction);
+  }
+  function handleOnChangeTypeView(event) {
+    setFilterType(event.target.value);
+  }
+
+  function handleOnSubmitFilterCategory(event) {
+    event.preventDefault();
+    const inputOption = event.target.elements.option.value;
+    setSelectedFilter(inputOption);
   }
 
   return (
@@ -22,10 +48,11 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        transactionsData={transactionsData}
-        onAddTransaction={handleAddTransaction}
-        onDeleteTransaction={handleDeleteTransaction}
-        showAddNewTransation={showAddNewTransation}
+        transactionsData={filteredData}
+        handleOnChangeTypeView={handleOnChangeTypeView}
+        handleAddTransaction={handleAddTransaction}
+        handleDeleteTransaction={handleDeleteTransaction}
+        handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
       />
     </>
   );

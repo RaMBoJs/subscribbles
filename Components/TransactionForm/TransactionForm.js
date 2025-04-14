@@ -10,7 +10,7 @@ import {
   StyledTransactionForm,
 } from "@/Components/TransactionForm/style-TansactionForm";
 
-const TransactionForm = ({ onAddTransaction }) => {
+const TransactionForm = ({ handleAddTransaction }) => {
   const identNumber = uid();
 
   function handleSubmit(event) {
@@ -28,7 +28,7 @@ const TransactionForm = ({ onAddTransaction }) => {
       amount: parseFloat(data.amount),
     };
 
-    onAddTransaction(requestBody);
+    handleAddTransaction(requestBody);
     event.target.reset();
   }
 
