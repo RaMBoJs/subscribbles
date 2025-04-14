@@ -3,13 +3,13 @@ import TransactionForm from "@/Components/TransactionForm/TransactionForm";
 import Header from "@/Components/Header";
 import NoDataHint from "@/Components/NoDataHint";
 import AccountBalance from "@/Components/AccountBalance/AccountBalance";
-import FilterTransaction from "@/Components/FilterTransactions";
+import FilterTransaction from "@/Components/FilterTransactions/FilterTransactions";
 
 export default function HomePage({
   transactionsData,
   onAddTransaction,
   onDeleteTransaction,
-  handleFilter,
+  handleOnSubmitFilterCategory,
 }) {
   return (
     <>
@@ -17,9 +17,11 @@ export default function HomePage({
 
       <AccountBalance transactions={transactionsData} />
 
-      <TransactionForm onAddTransaction={onAddTransaction} />
+      <FilterTransaction
+        handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
+      />
 
-      <FilterTransaction handleFilter={handleFilter} />
+      <TransactionForm onAddTransaction={onAddTransaction} />
 
       <NoDataHint transactionsData={transactionsData}></NoDataHint>
 
