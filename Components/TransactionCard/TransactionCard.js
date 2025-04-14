@@ -1,8 +1,15 @@
-import styled from "styled-components";
-import Image from "next/image";
-import Delete from "./Delete/DeleteTransactionCard";
+import {
+  StyledTransactionCard,
+  StyledCatergory,
+  StyledType,
+  StyledAmount,
+  StyledDate,
+  StyledIcon,
+  StyledContainer,
+} from "./Styled-TransactionCard";
+import Delete from "../Delete/DeleteTransactionCard";
 
-export default function TransactionCard({ transaction, onDeleteTransaction }) {
+function TransactionCard({ transaction, handleDeleteTransaction }) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
     iconImageSrc = "salad.svg";
@@ -49,57 +56,15 @@ export default function TransactionCard({ transaction, onDeleteTransaction }) {
           <StyledCatergory>{transaction.category}</StyledCatergory>
           <StyledType>{transaction.type}</StyledType>
         </StyledContainer>
-
-        <StyledAmount>{`${transaction.amount}€`}</StyledAmount>
-
+        <StyledAmount>{`${transaction.amount.toFixed(2)} €`}</StyledAmount>
         <StyledDate>{transaction.date}</StyledDate>
         <Delete
           transactionId={transaction}
-          onDeleteTransaction={onDeleteTransaction}
+          handleDeleteTransaction={handleDeleteTransaction}
         />
       </StyledTransactionCard>
     </>
   );
 }
 
-const StyledTransactionCard = styled.div`
-  background-color: ${({ type }) =>
-    type === "expense" ? "rgb(244, 123, 123)" : "rgb(165, 221, 145)"};
-  width: 360px;
-  height: 200px;
-  border: solid black 1px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  margin-left: 8px;
-  margin-top: 10px;
-  padding: 10px;
-`;
-
-const StyledCatergory = styled.div`
-  font-weight: bold;
-  font-size: 25px;
-`;
-
-const StyledType = styled.div`
-  font-size: 20px;
-  margin-top: 2px;
-`;
-
-const StyledAmount = styled.div`
-  font-weight: bold;
-  font-size: 25px;
-  text-align: end;
-  margin-top: -45px;
-`;
-
-const StyledDate = styled.div`
-  margin-top: 20px;
-`;
-
-const StyledIcon = styled(Image)`
-  margin-left: 310px;
-`;
-
-const StyledContainer = styled.div`
-  margin-top: 40px;
-`;
+export default TransactionCard;

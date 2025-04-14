@@ -4,25 +4,34 @@ import { data } from "@/assets/transactions";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
-  const [showAddNewTransation, setShowAddNewTransaction] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("All");
+  const [filterType, setFilterType] = useState("all");
 
-  const filteredData =
+  let filteredData =
     selectedFilter === "All"
       ? transactionsData
       : transactionsData.filter(
-          (element) => element.category === selectedFilter
-        );
+          (element) => element.category === selectedFilter);
+
+  //double used
+   filteredData =
+    filterType === "all"
+      ? transactionsData
+      : transactionsData.filter(
+          (transactions) => transactions.type === filterType);
 
   function handleAddTransaction(newTransaction) {
     setTransactionsData([newTransaction, ...transactionsData]);
   }
 
-  function handleDeleteTransaction(transactionId) {
-    const filterdTransaction = transactionsData.filter(
-      (element) => transactionId.id !== element.id
+  function handleDeleteTransaction(transaction) {
+    const filteredTransaction = transactionsData.filter(
+      (element) => transaction.id !== element.id
     );
-    setTransactionsData(filterdTransaction);
+    setTransactionsData(filteredTransaction);
+  }
+  function handleOnChangeTypeView(event) {
+    setFilterType(event.target.value);
   }
 
   function handleOnSubmitFilterCategory(event) {
@@ -37,9 +46,9 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         transactionsData={filteredData}
-        onAddTransaction={handleAddTransaction}
-        onDeleteTransaction={handleDeleteTransaction}
-        showAddNewTransation={showAddNewTransation}
+        handleOnChangeTypeView={handleOnChangeTypeView}
+        handleAddTransaction={handleAddTransaction}
+        handleDeleteTransaction={handleDeleteTransaction}
         handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
       />
     </>
