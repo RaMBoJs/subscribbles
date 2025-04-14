@@ -4,14 +4,24 @@ import { data } from "@/assets/transactions";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
+  const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
 
-  const filteredData =
-    filterType === "all"
-      ? transactionsData
-      : transactionsData.filter(
-          (transactions) => transactions.type === filterType
-        );
+const filteredData = transactionsData
+  .filter(transaction => selectedFilter === "All" || transaction.category === selectedFilter)
+  .filter(transaction => filterType === "all" || transaction.type === filterType);
+  
+//  let filteredData =
+//    selectedFilter === "All"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (element) => element.category === selectedFilter);
+
+//   filteredData =
+//    filterType === "all"
+//      ? transactionsData
+//      : transactionsData.filter(
+//          (transactions) => transactions.type === filterType);
 
   function handleAddTransaction(newTransaction) {
     setTransactionsData([newTransaction, ...transactionsData]);
@@ -27,6 +37,12 @@ export default function App({ Component, pageProps }) {
     setFilterType(event.target.value);
   }
 
+  function handleOnSubmitFilterCategory(event) {
+    event.preventDefault();
+    const inputOption = event.target.elements.option.value;
+    setSelectedFilter(inputOption);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -36,6 +52,7 @@ export default function App({ Component, pageProps }) {
         handleOnChangeTypeView={handleOnChangeTypeView}
         handleAddTransaction={handleAddTransaction}
         handleDeleteTransaction={handleDeleteTransaction}
+        handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
       />
     </>
   );
