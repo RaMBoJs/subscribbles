@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-
 import {
   StyledTrashImage,
   StyledToggle,
@@ -12,7 +11,7 @@ import {
 } from "./style-DeleteTransactionCard";
 import styled from "styled-components";
 
-function DeleteTransactionCard({ transactionId, onDeleteTransaction }) {
+function DeleteTransactionCard({ transactionId, handleDeleteTransaction }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -47,7 +46,7 @@ function DeleteTransactionCard({ transactionId, onDeleteTransaction }) {
               </StyledCancelButton>
               <StyledYesButton
                 onClick={() => {
-                  onDeleteTransaction(transactionId);
+                  handleDeleteTransaction(transactionId);
                 }}
               >
                 Yes, I am sure

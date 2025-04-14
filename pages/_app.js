@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GlobalStyle from "../styles";
 import { data } from "@/assets/transactions";
 
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
     );
     setTransactionsData(filteredTransaction);
   }
-  function handleOnChange(event) {
+  function handleOnChangeTypeView(event) {
     setFilterType(event.target.value);
   }
 
@@ -33,9 +33,9 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         transactionsData={filteredData}
-        handleOnChange={handleOnChange}
+        handleOnChangeTypeView={handleOnChangeTypeView}
         handleAddTransaction={handleAddTransaction}
-        onDeleteTransaction={handleDeleteTransaction}
+        handleDeleteTransaction={handleDeleteTransaction}
       />
     </>
   );

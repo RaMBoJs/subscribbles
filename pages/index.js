@@ -1,21 +1,21 @@
 import TransactionCard from "@/Components/TransactionCard";
 import TransactionForm from "@/Components/TransactionForm/TransactionForm";
-import Header from "@/Components/Header";
+import Header from "@/Components/Header/Header";
 import AccountBalance from "@/Components/AccountBalance/AccountBalance";
 import IncomeExpanseView from "@/Components/IncomeExpanseView/IncomeExpanseView";
-import NoDataHint from "@/Components/NoDataHint";
+import NoDataHint from "@/Components/NoDataHint/NoDataHint";
 
 export default function HomePage({
   transactionsData,
   handleAddTransaction,
-  onDeleteTransaction,
-  handleOnChange,
+  handleDeleteTransaction,
+  handleOnChangeTypeView,
 }) {
   return (
     <>
       <Header />
       <AccountBalance transactions={transactionsData} />
-      <IncomeExpanseView handleOnChange={handleOnChange} />
+      <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
       <TransactionForm handleAddTransaction={handleAddTransaction} />
       <NoDataHint transactionsData={transactionsData} />
       {transactionsData.map((element) => {
@@ -23,7 +23,7 @@ export default function HomePage({
           <TransactionCard
             key={element.id}
             transaction={element}
-            onDeleteTransaction={onDeleteTransaction}
+            handleDeleteTransaction={handleDeleteTransaction}
           />
         );
       })}

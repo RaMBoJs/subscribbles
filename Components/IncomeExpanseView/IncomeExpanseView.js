@@ -1,6 +1,6 @@
 import { StyledSelect, DropdownWrapper } from "./Styled-incomeExpanse";
 
-function IncomeExpanseView({ handleOnChange }) {
+function IncomeExpanseView({ handleOnChangeTypeView }) {
   const filterOptions = [
     { value: "all", label: "All" },
     { value: "income", label: "Income" },
@@ -9,7 +9,10 @@ function IncomeExpanseView({ handleOnChange }) {
 
   return (
     <DropdownWrapper>
-      <StyledSelect aria-label="Filter by type" onChange={handleOnChange}>
+      <StyledSelect
+        aria-label="Filter by type"
+        onChange={handleOnChangeTypeView}
+      >
         {filterOptions.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
