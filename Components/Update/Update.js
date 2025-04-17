@@ -9,10 +9,6 @@ import categoriesData from "@/assets/categories";
 
 function Update({ transaction, handleOnSubmitUpdateTransaction }) {
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    ...transaction,
-    date: transaction.date.slice(0, 10),
-  });
 
   function handleShowForm() {
     setShowForm(!showForm);
@@ -35,55 +31,28 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
             <input
               type="number"
               name="amount"
-              value={formData.amount}
+              defaultValue={transaction.amount}
               required
-              onChange={(event) =>
-                setFormData({ ...formData, amount: event.target.value })
-              }
+              step="0.01"
             ></input>
             <input
               type="date"
               name="date"
-              value={formData.date}
-              required
-              onChange={(event) =>
-                setFormData({ ...formData, date: event.target.value })
-              }
-            ></input>
-            <label htmlFor="expense">expense</label>
-            <input
-              type="radio"
-              name="type"
-              value="expense"
-              id="expense"
-              checked={formData.type === "expense"}
-              onChange={(event) =>
-                setFormData({ ...formData, type: event.target.value })
-              }
+              defaultValue={transaction.date.slice(0, 10)}
               required
             ></input>
-            <label htmlFor="income">income</label>
-            <input
-              type="radio"
-              name="type"
-              value="income"
-              id="income"
-              checked={formData.type === "income"}
-              onChange={(event) =>
-                setFormData({ ...formData, type: event.target.value })
-              }
-            ></input>
+            <select name="type" defaultValue={transaction.type} required>
+              <option value={"income"}>Income</option>
+              <option value={"expense"}>Expense</option>
+            </select>
             <select
               name="category"
               required
-              value={formData.category}
-              onChange={(event) =>
-                setFormData({ ...formData, category: event.target.value })
-              }
+              defaultValue={transaction.category}
             >
               {categoriesData.map((element) => {
                 return element.id !== 0 ? (
-                  <option key={element.id} value={element.categoryValue}>
+                  <option key={element.id} defaultValue={element.categoryValue}>
                     {element.categoryText}
                   </option>
                 ) : null;
