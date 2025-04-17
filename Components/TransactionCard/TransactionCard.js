@@ -6,10 +6,16 @@ import {
   StyledDate,
   StyledIcon,
   StyledContainer,
+  StyledIconContainer,
 } from "./Styled-TransactionCard";
 import Delete from "../Delete/DeleteTransactionCard";
+import Update from "../Update/Update";
 
-function TransactionCard({ transaction, handleDeleteTransaction }) {
+function TransactionCard({
+  transaction,
+  handleDeleteTransaction,
+  handleOnSubmitUpdateTransaction,
+}) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
     iconImageSrc = "salad.svg";
@@ -43,27 +49,31 @@ function TransactionCard({ transaction, handleDeleteTransaction }) {
   }
 
   return (
-    <>
-      <StyledTransactionCard type={transaction.type}>
-        <StyledIcon
-          src={iconImageSrc}
-          alt={`${transaction.category}-icon`}
-          width="25"
-          height="25"
-        />
+    <StyledTransactionCard type={transaction.type}>
+      <StyledIcon
+        src={iconImageSrc}
+        alt={`${transaction.category}-icon`}
+        width="25"
+        height="25"
+      />
 
-        <StyledContainer>
-          <StyledCatergory>{transaction.category}</StyledCatergory>
-          <StyledType>{transaction.type}</StyledType>
-        </StyledContainer>
-        <StyledAmount>{`${transaction.amount.toFixed(2)} €`}</StyledAmount>
-        <StyledDate>{transaction.date}</StyledDate>
+      <StyledContainer>
+        <StyledCatergory>{transaction.category}</StyledCatergory>
+        <StyledType>{transaction.type}</StyledType>
+      </StyledContainer>
+      <StyledAmount>{`${transaction.amount.toFixed(2)} €`}</StyledAmount>
+      <StyledDate>{transaction.date.slice(0, 10)}</StyledDate>
+      <StyledIconContainer>
         <Delete
           transactionId={transaction}
           handleDeleteTransaction={handleDeleteTransaction}
         />
-      </StyledTransactionCard>
-    </>
+        <Update
+          transaction={transaction}
+          handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+        />
+      </StyledIconContainer>
+    </StyledTransactionCard>
   );
 }
 
