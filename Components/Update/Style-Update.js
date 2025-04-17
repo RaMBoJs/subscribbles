@@ -26,4 +26,9 @@ const StyledUpdateForm = styled.form`
   background-color: rgb(90, 90, 90);
 `;
 
-export { StyledModalBackground, StyledUpdateForm };
+const StyledButton = styled.button`
+  background: none;
+  border: none;
+`;
+
+export { StyledModalBackground, StyledUpdateForm, StyledButton };

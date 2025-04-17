@@ -1,11 +1,15 @@
-import { data } from "@/assets/transactions";
 import { useState } from "react";
-import { StyledModalBackground, StyledUpdateForm } from "./Style-Update";
+import {
+  StyledModalBackground,
+  StyledUpdateForm,
+  StyledButton,
+} from "./Style-Update";
 import Image from "next/image";
+import categoriesData from "@/assets/categories";
 
 function Update({ transaction, handleOnSubmitUpdateTransaction }) {
   const [showForm, setShowForm] = useState(false);
-  const [formdata, setformdata] = useState({
+  const [formData, setFormData] = useState({
     ...transaction,
     date: transaction.date.slice(0, 10),
   });
@@ -16,12 +20,9 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
 
   return (
     <>
-      <button
-        style={{ background: "none", border: "none" }}
-        onClick={handleShowForm}
-      >
+      <StyledButton type="button" name="editButton" onClick={handleShowForm}>
         <Image src="./pencil-line.svg" alt="bild" width="25" height="25" />
-      </button>
+      </StyledButton>
 
       {showForm && (
         <StyledModalBackground>
@@ -34,19 +35,19 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
             <input
               type="number"
               name="amount"
-              value={formdata.amount}
+              value={formData.amount}
               required
               onChange={(event) =>
-                setformdata({ ...formdata, amount: event.target.value })
+                setFormData({ ...formData, amount: event.target.value })
               }
             ></input>
             <input
               type="date"
               name="date"
-              value={formdata.date}
+              value={formData.date}
               required
               onChange={(event) =>
-                setformdata({ ...formdata, date: event.target.value })
+                setFormData({ ...formData, date: event.target.value })
               }
             ></input>
             <label htmlFor="expense">expense</label>
@@ -55,9 +56,9 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
               name="type"
               value="expense"
               id="expense"
-              checked={formdata.type === "expense"}
+              checked={formData.type === "expense"}
               onChange={(event) =>
-                setformdata({ ...formdata, type: event.target.value })
+                setFormData({ ...formData, type: event.target.value })
               }
               required
             ></input>
@@ -67,25 +68,25 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
               name="type"
               value="income"
               id="income"
-              checked={formdata.type === "income"}
+              checked={formData.type === "income"}
               onChange={(event) =>
-                setformdata({ ...formdata, type: event.target.value })
+                setFormData({ ...formData, type: event.target.value })
               }
             ></input>
             <select
               name="category"
               required
-              value={formdata.category}
+              value={formData.category}
               onChange={(event) =>
-                setformdata({ ...formdata, category: event.target.value })
+                setFormData({ ...formData, category: event.target.value })
               }
             >
-              {data.map((element, index) => {
-                return (
-                  <option key={index} value={element.category}>
-                    {element.category}
+              {categoriesData.map((element) => {
+                return element.id !== 0 ? (
+                  <option key={element.id} value={element.categoryValue}>
+                    {element.categoryText}
                   </option>
-                );
+                ) : null;
               })}
             </select>
             <button type="submit">Update</button>

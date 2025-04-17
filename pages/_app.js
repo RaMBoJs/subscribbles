@@ -45,15 +45,10 @@ export default function App({ Component, pageProps }) {
       id: transaction.id,
       amount: parseFloat(data.amount),
     };
-
-    const updatedTransaction = transactionsData.map((element) => {
-      if (element.id === transaction.id) {
-        element = dataBody;
-      }
-      return element;
-    });
-
-    setTransactionsData(updatedTransaction);
+    const updatedTransactions = transactionsData.map((element) =>
+      element.id === transaction.id ? dataBody : element
+    );
+    setTransactionsData(updatedTransactions);
     event.target.reset();
   }
 
