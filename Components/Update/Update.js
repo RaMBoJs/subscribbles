@@ -34,13 +34,13 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
               defaultValue={transaction.amount}
               required
               step="0.01"
-            ></input>
+            />
             <input
               type="date"
               name="date"
               defaultValue={transaction.date.slice(0, 10)}
               required
-            ></input>
+            />
             <select name="type" defaultValue={transaction.type} required>
               <option value={"income"}>Income</option>
               <option value={"expense"}>Expense</option>
