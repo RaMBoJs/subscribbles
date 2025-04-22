@@ -41,6 +41,11 @@ const StyledContainer = styled.div`
   margin-top: 40px;
 `;
 
+const StyledIconContainer = styled.div`
+  display: flex;
+  margin: 5px 0px 0px 0px;
+`;
+
 export {
   StyledTransactionCard,
   StyledCatergory,
@@ -49,4 +54,5 @@ export {
   StyledDate,
   StyledIcon,
   StyledContainer,
+  StyledIconContainer,
 };
