@@ -12,7 +12,7 @@ export default function HomePage({
   handleDeleteTransaction,
   handleOnChangeTypeView,
   handleOnSubmitFilterCategory,
-  handleOnSubmitUpdateTransaction,
+  handleUpdateTransaction,
 }) {
   return (
     <>
@@ -32,7 +32,7 @@ export default function HomePage({
               key={element._id}
               transaction={element}
               handleDeleteTransaction={handleDeleteTransaction}
-              handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+              handleUpdateTransaction={handleUpdateTransaction}
             />
           );
         })}

@@ -14,7 +14,7 @@ import Update from "../Update/Update";
 function TransactionCard({
   transaction,
   handleDeleteTransaction,
-  handleOnSubmitUpdateTransaction,
+  handleUpdateTransaction,
 }) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
@@ -70,7 +70,7 @@ function TransactionCard({
         />
         <Update
           transaction={transaction}
-          handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+          handleUpdateTransaction={handleUpdateTransaction}
         />
       </StyledIconContainer>
     </StyledTransactionCard>

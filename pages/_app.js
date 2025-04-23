@@ -1,6 +1,5 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import { data } from "@/assets/transactions"; // old
 import { SWRConfig } from "swr";
 import swrConfig from "@/lib/fetch/swrConfig";
 import Head from "next/head";
@@ -8,7 +7,6 @@ import useAppDataTransactions from "@/hooks/useAppDataTransactions";
 import useAppDataCategories from "@/hooks/usaAppDataCategories";
 
 export default function App({ Component, pageProps }) {
-  const [transactionsData, setTransactionsData] = useState(data); // old
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
 
@@ -19,6 +17,7 @@ export default function App({ Component, pageProps }) {
     errorTransactions,
     addTransaction,
     deleteTransaction,
+    updateTransaction,
   } = useAppDataTransactions();
   const {
     categoriesObjects,
@@ -35,6 +34,9 @@ export default function App({ Component, pageProps }) {
     deleteTransaction(transaction);
   }
 
+  function handleUpdateTransaction(transaction, dataBody) {
+    updateTransaction(transaction, dataBody);
+  }
   // --------------
 
   // Filter Data
@@ -57,22 +59,6 @@ export default function App({ Component, pageProps }) {
     setSelectedFilter(inputOption);
   }
   // --------------
-
-  function handleOnSubmitUpdateTransaction(event, transaction) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    const dataBody = {
-      ...data,
-      id: transaction.id,
-      amount: parseFloat(data.amount),
-    };
-    const updatedTransactions = transactionsData.map((element) =>
-      element.id === transaction.id ? dataBody : element
-    );
-    setTransactionsData(updatedTransactions);
-    event.target.reset();
-  }
 
   // Loading data & Show Data load errors
   if (isLoadingTransactions || isLoadingCategories) {
@@ -98,7 +84,7 @@ export default function App({ Component, pageProps }) {
         handleAddTransaction={handleAddTransaction}
         handleDeleteTransaction={handleDeleteTransaction}
         handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
-        handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+        handleUpdateTransaction={handleUpdateTransaction}
       />
     </>
   );

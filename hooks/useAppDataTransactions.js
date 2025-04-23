@@ -28,12 +28,20 @@ function useAppDataTransactions() {
     setTransactionsObjects(filteredTransactionObjects);
   }
 
+  function updateTransaction(transaction, dataBody) {
+    const updatedTransactionsObjects = transactionsObjects.map((element) =>
+      element._id === transaction._id ? dataBody : element
+    );
+    setTransactionsObjects(updatedTransactionsObjects);
+  }
+
   return {
     transactionsObjects,
     isLoadingTransactions,
     errorTransactions,
     addTransaction,
     deleteTransaction,
+    updateTransaction,
   };
 }
 
