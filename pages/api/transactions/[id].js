@@ -11,9 +11,24 @@ async function handleSingleTransactionsData(request, response) {
     return;
   }
   // --------  DELETE single data response: delete single data record  --------
-
+  if (request.method === "DELETE") {
+    await transactionsModel.findByIdAndDelete(id);
+    response.status(200).json({
+      type: "Information",
+      message: `Record ${id} successfully deleted.`,
+    });
+    return;
+  }
   // --------  PUT single data response: update single data record  --------
-
+  if (request.method === "PUT") {
+    const data = request.body;
+    await transactionsModel.findByIdAndUpdate(id, data);
+    response.status(200).json({
+      type: "Information",
+      message: `Record ${id} successfully updated.`,
+    });
+    return;
+  }
   // --------  invalid data response  --------
   return response
     .status(405)

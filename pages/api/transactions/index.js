@@ -17,7 +17,7 @@ async function handleTransactionsData(request, response) {
       .status(201)
       .json({ type: "Status", message: "Transaction created." });
     return;
-  }
+  } 
   // --------  invalid data response  --------
   return response
     .status(405)

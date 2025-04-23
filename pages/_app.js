@@ -1,6 +1,9 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
 import { data } from "@/assets/transactions";
+import { SWRConfig } from "swr";
+import swrConfig from "@/lib/fetch/swrConfig";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
@@ -54,6 +57,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <SWRConfig value={swrConfig} />
+      <Head>
+        <title>RaMBo-Js | Finory</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
       <GlobalStyle />
       <Component
         {...pageProps}
