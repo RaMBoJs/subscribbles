@@ -1,14 +1,36 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import { data } from "@/assets/transactions";
+import { data } from "@/assets/transactions"; // old
 import { SWRConfig } from "swr";
 import swrConfig from "@/lib/fetch/swrConfig";
 import Head from "next/head";
+import useAppDataTransactions from "@/hooks/useAppDataTransactions";
+import useAppDataCategories from "@/hooks/usaAppDataCategories";
 
 export default function App({ Component, pageProps }) {
   const [transactionsData, setTransactionsData] = useState(data);
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
+
+  // custom hooks to load, write data
+  const {
+    transactionsObjects,
+    addTransaction,
+    isLoadingTransactions,
+    errorTransactions,
+  } = useAppDataTransactions();
+  const {
+    categoriesObjects,
+    isLoadingCategories,
+    errorCategories,
+    addCategories,
+  } = useAppDataCategories();
+
+  // Handler
+  function handleAddTransaction(newTransactionObject) {
+    addTransaction(newTransactionObject);
+  }
+  // --------------
 
   const filteredData = transactionsData
     .filter(
@@ -18,10 +40,6 @@ export default function App({ Component, pageProps }) {
     .filter(
       (transaction) => filterType === "all" || transaction.type === filterType
     );
-
-  function handleAddTransaction(newTransaction) {
-    setTransactionsData([newTransaction, ...transactionsData]);
-  }
 
   function handleDeleteTransaction(transaction) {
     const filteredTransaction = transactionsData.filter(
@@ -55,11 +73,20 @@ export default function App({ Component, pageProps }) {
     event.target.reset();
   }
 
+  // Loading data & Show Data load errors
+  if (isLoadingTransactions || isLoadingCategories) {
+    return <p>Loading data...</p>;
+  }
+
+  if (errorTransactions || errorCategories) {
+    return <p>Error: {errorTransactions.message || errorCategories.message}</p>;
+  }
+
   return (
     <>
       <SWRConfig value={swrConfig} />
       <Head>
-        <title>RaMBo-Js | Finory</title>
+        <title> Finory | RaMBo-Js</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <GlobalStyle />

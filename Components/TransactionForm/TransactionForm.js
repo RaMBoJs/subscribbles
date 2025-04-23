@@ -1,4 +1,3 @@
-import { uid } from "uid";
 import categoriesData from "@/assets/categories";
 import {
   StyledSubmitButton,
@@ -9,31 +8,13 @@ import {
   StyledFormHeadline,
   StyledTransactionForm,
 } from "@/Components/TransactionForm/style-TansactionForm";
+import handleTransactionSubmit from "@/lib/utils/components/TransactionForm/handleTransactionSubmit";
 
 const TransactionForm = ({ handleAddTransaction }) => {
-  const identNumber = uid();
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    if (data.type === "expense") {
-      data.amount = data.amount * -1;
-    }
-
-    const requestBody = {
-      ...data,
-      id: identNumber,
-      amount: parseFloat(data.amount),
-    };
-
-    handleAddTransaction(requestBody);
-    event.target.reset();
-  }
-
   return (
-    <StyledTransactionForm onSubmit={handleSubmit}>
+    <StyledTransactionForm
+      onSubmit={(event) => handleTransactionSubmit(event, handleAddTransaction)}
+    >
       <StyledFormHeadline>Create a new Transaction Entry</StyledFormHeadline>
 
       <StyledCategoryInput aria-label="Category input" name="category" required>
