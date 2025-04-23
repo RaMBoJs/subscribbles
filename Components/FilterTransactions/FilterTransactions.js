@@ -1,20 +1,19 @@
-import { data } from "@/assets/transactions";
 import {
   StyledButton,
   StyledSelect,
   StyledForm,
 } from "./Styled-FilterTransactions";
 
-function FilterTransaction({ handleOnSubmitFilterCategory }) {
+function FilterTransaction({ handleOnSubmitFilterCategory, categoriesData }) {
   return (
     <>
       <StyledForm onSubmit={handleOnSubmitFilterCategory}>
         <StyledSelect name="option">
           <option value={"All"}>All</option>
-          {data.map((element, index) => {
+          {categoriesData.map((element) => {
             return (
-              <option key={index} value={element.category}>
-                {element.category}
+              <option key={element._id} value={element.category}>
+                {element.categoryText}
               </option>
             );
           })}

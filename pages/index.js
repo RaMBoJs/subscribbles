@@ -8,6 +8,7 @@ import NoDataHint from "@/Components/NoDataHint/NoDataHint";
 
 export default function HomePage({
   transactionsData,
+  categoriesData,
   handleAddTransaction,
   handleDeleteTransaction,
   handleOnChangeTypeView,
@@ -20,6 +21,7 @@ export default function HomePage({
       <AccountBalance transactions={transactionsData} />
       <FilterTransaction
         handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
+        categoriesData={categoriesData}
       />
       <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
       <TransactionForm handleAddTransaction={handleAddTransaction} />

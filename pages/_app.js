@@ -80,6 +80,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         transactionsData={filteredData}
+        categoriesData={categoriesObjects}
         handleOnChangeTypeView={handleOnChangeTypeView}
         handleAddTransaction={handleAddTransaction}
         handleDeleteTransaction={handleDeleteTransaction}
