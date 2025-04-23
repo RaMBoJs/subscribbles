@@ -8,11 +8,12 @@ import NoDataHint from "@/Components/NoDataHint/NoDataHint";
 
 export default function HomePage({
   transactionsData,
+  categoriesData,
   handleAddTransaction,
   handleDeleteTransaction,
   handleOnChangeTypeView,
   handleOnSubmitFilterCategory,
-  handleOnSubmitUpdateTransaction
+  handleUpdateTransaction,
 }) {
   return (
     <>
@@ -20,20 +21,23 @@ export default function HomePage({
       <AccountBalance transactions={transactionsData} />
       <FilterTransaction
         handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
+        categoriesData={categoriesData}
       />
       <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
       <TransactionForm handleAddTransaction={handleAddTransaction} />
       <NoDataHint transactionsData={transactionsData} />
-      {transactionsData.map((element) => {
-        return (
-          <TransactionCard
-            key={element.id}
-            transaction={element}
-            handleDeleteTransaction={handleDeleteTransaction}
-            handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
-          />
-        );
-      })}
+      {transactionsData
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((element) => {
+          return (
+            <TransactionCard
+              key={element._id}
+              transaction={element}
+              handleDeleteTransaction={handleDeleteTransaction}
+              handleUpdateTransaction={handleUpdateTransaction}
+            />
+          );
+        })}
     </>
   );
 }

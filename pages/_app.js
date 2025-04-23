@@ -1,13 +1,46 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import { data } from "@/assets/transactions";
+import { SWRConfig } from "swr";
+import swrConfig from "@/lib/fetch/swrConfig";
+import Head from "next/head";
+import useAppDataTransactions from "@/hooks/useAppDataTransactions";
+import useAppDataCategories from "@/hooks/usaAppDataCategories";
 
 export default function App({ Component, pageProps }) {
-  const [transactionsData, setTransactionsData] = useState(data);
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
 
-  const filteredData = transactionsData
+  // custom hooks to load, write data
+  const {
+    transactionsObjects,
+    isLoadingTransactions,
+    errorTransactions,
+    addTransaction,
+    deleteTransaction,
+    updateTransaction,
+  } = useAppDataTransactions();
+  const {
+    categoriesObjects,
+    isLoadingCategories,
+    errorCategories,
+    addCategories,
+  } = useAppDataCategories();
+
+  // Data Handler
+  function handleAddTransaction(newTransactionObject) {
+    addTransaction(newTransactionObject);
+  }
+  function handleDeleteTransaction(transaction) {
+    deleteTransaction(transaction);
+  }
+
+  function handleUpdateTransaction(transaction, dataBody) {
+    updateTransaction(transaction, dataBody);
+  }
+  // --------------
+
+  // Filter Data
+  const filteredData = transactionsObjects
     .filter(
       (transaction) =>
         selectedFilter === "All" || transaction.category === selectedFilter
@@ -16,16 +49,6 @@ export default function App({ Component, pageProps }) {
       (transaction) => filterType === "all" || transaction.type === filterType
     );
 
-  function handleAddTransaction(newTransaction) {
-    setTransactionsData([newTransaction, ...transactionsData]);
-  }
-
-  function handleDeleteTransaction(transaction) {
-    const filteredTransaction = transactionsData.filter(
-      (element) => transaction.id !== element.id
-    );
-    setTransactionsData(filteredTransaction);
-  }
   function handleOnChangeTypeView(event) {
     setFilterType(event.target.value);
   }
@@ -35,34 +58,34 @@ export default function App({ Component, pageProps }) {
     const inputOption = event.target.elements.option.value;
     setSelectedFilter(inputOption);
   }
+  // --------------
 
-  function handleOnSubmitUpdateTransaction(event, transaction) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    const dataBody = {
-      ...data,
-      id: transaction.id,
-      amount: parseFloat(data.amount),
-    };
-    const updatedTransactions = transactionsData.map((element) =>
-      element.id === transaction.id ? dataBody : element
-    );
-    setTransactionsData(updatedTransactions);
-    event.target.reset();
+  // Loading data & Show Data load errors
+  if (isLoadingTransactions || isLoadingCategories) {
+    return <p>Loading data...</p>;
+  }
+
+  if (errorTransactions || errorCategories) {
+    return <p>Error: {errorTransactions.message || errorCategories.message}</p>;
   }
 
   return (
     <>
+      <SWRConfig value={swrConfig} />
+      <Head>
+        <title> Finory | RaMBo-Js</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
       <GlobalStyle />
       <Component
         {...pageProps}
         transactionsData={filteredData}
+        categoriesData={categoriesObjects}
         handleOnChangeTypeView={handleOnChangeTypeView}
         handleAddTransaction={handleAddTransaction}
         handleDeleteTransaction={handleDeleteTransaction}
         handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
-        handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+        handleUpdateTransaction={handleUpdateTransaction}
       />
     </>
   );

@@ -6,8 +6,9 @@ import {
 } from "./Style-Update";
 import Image from "next/image";
 import categoriesData from "@/assets/categories";
+import handleTransactionUpdate from "@/lib/utils/components/handleTransactionUpdate";
 
-function Update({ transaction, handleOnSubmitUpdateTransaction }) {
+function Update({ transaction, handleUpdateTransaction }) {
   const [showForm, setShowForm] = useState(false);
 
   function handleShowForm() {
@@ -24,7 +25,11 @@ function Update({ transaction, handleOnSubmitUpdateTransaction }) {
         <StyledModalBackground>
           <StyledUpdateForm
             onSubmit={(event) => {
-              handleOnSubmitUpdateTransaction(event, transaction);
+              handleTransactionUpdate(
+                event,
+                transaction,
+                handleUpdateTransaction
+              );
               handleShowForm();
             }}
           >
