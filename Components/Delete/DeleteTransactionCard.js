@@ -8,10 +8,11 @@ import {
   StyledYesButton,
   StyledCenterText,
   StyledFlex,
+  StyledModal,
 } from "./style-DeleteTransactionCard";
-import styled from "styled-components";
+import handleTransactionDelete from "@/lib/utils/components/handleTransactionDelete";
 
-function DeleteTransactionCard({ transactionId, handleDeleteTransaction }) {
+function DeleteTransactionCard({ transaction, handleDeleteTransaction }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -46,7 +47,8 @@ function DeleteTransactionCard({ transactionId, handleDeleteTransaction }) {
               </StyledCancelButton>
               <StyledYesButton
                 onClick={() => {
-                  handleDeleteTransaction(transactionId);
+                  handleTransactionDelete(transaction, handleDeleteTransaction);
+                  setIsModalOpen(false);
                 }}
               >
                 Yes, I am sure
@@ -60,15 +62,3 @@ function DeleteTransactionCard({ transactionId, handleDeleteTransaction }) {
 }
 
 export default DeleteTransactionCard;
-
-const StyledModal = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(80, 80, 80, 0.6);
-`;

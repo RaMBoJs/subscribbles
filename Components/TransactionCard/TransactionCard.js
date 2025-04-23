@@ -14,7 +14,7 @@ import Update from "../Update/Update";
 function TransactionCard({
   transaction,
   handleDeleteTransaction,
-  handleOnSubmitUpdateTransaction,
+  handleUpdateTransaction,
 }) {
   let iconImageSrc = "";
   if (transaction.category === "Groceries") {
@@ -65,12 +65,12 @@ function TransactionCard({
       <StyledDate>{transaction.date.slice(0, 10)}</StyledDate>
       <StyledIconContainer>
         <Delete
-          transactionId={transaction}
+          transaction={transaction}
           handleDeleteTransaction={handleDeleteTransaction}
         />
         <Update
           transaction={transaction}
-          handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+          handleUpdateTransaction={handleUpdateTransaction}
         />
       </StyledIconContainer>
     </StyledTransactionCard>
