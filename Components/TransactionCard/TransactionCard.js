@@ -65,7 +65,7 @@ function TransactionCard({
       <StyledDate>{transaction.date.slice(0, 10)}</StyledDate>
       <StyledIconContainer>
         <Delete
-          transactionId={transaction}
+          transaction={transaction}
           handleDeleteTransaction={handleDeleteTransaction}
         />
         <Update

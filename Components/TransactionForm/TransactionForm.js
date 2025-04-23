@@ -8,7 +8,7 @@ import {
   StyledFormHeadline,
   StyledTransactionForm,
 } from "@/Components/TransactionForm/style-TansactionForm";
-import handleTransactionSubmit from "@/lib/utils/components/TransactionForm/handleTransactionSubmit";
+import handleTransactionSubmit from "@/lib/utils/components/handleTransactionSubmit";
 
 const TransactionForm = ({ handleAddTransaction }) => {
   return (

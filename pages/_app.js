@@ -8,16 +8,17 @@ import useAppDataTransactions from "@/hooks/useAppDataTransactions";
 import useAppDataCategories from "@/hooks/usaAppDataCategories";
 
 export default function App({ Component, pageProps }) {
-  const [transactionsData, setTransactionsData] = useState(data);
+  const [transactionsData, setTransactionsData] = useState(data); // old
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [filterType, setFilterType] = useState("all");
 
   // custom hooks to load, write data
   const {
     transactionsObjects,
-    addTransaction,
     isLoadingTransactions,
     errorTransactions,
+    addTransaction,
+    deleteTransaction,
   } = useAppDataTransactions();
   const {
     categoriesObjects,
@@ -26,13 +27,18 @@ export default function App({ Component, pageProps }) {
     addCategories,
   } = useAppDataCategories();
 
-  // Handler
+  // Data Handler
   function handleAddTransaction(newTransactionObject) {
     addTransaction(newTransactionObject);
   }
+  function handleDeleteTransaction(transaction) {
+    deleteTransaction(transaction);
+  }
+
   // --------------
 
-  const filteredData = transactionsData
+  // Filter Data
+  const filteredData = transactionsObjects
     .filter(
       (transaction) =>
         selectedFilter === "All" || transaction.category === selectedFilter
@@ -41,12 +47,6 @@ export default function App({ Component, pageProps }) {
       (transaction) => filterType === "all" || transaction.type === filterType
     );
 
-  function handleDeleteTransaction(transaction) {
-    const filteredTransaction = transactionsData.filter(
-      (element) => transaction.id !== element.id
-    );
-    setTransactionsData(filteredTransaction);
-  }
   function handleOnChangeTypeView(event) {
     setFilterType(event.target.value);
   }
@@ -56,6 +56,7 @@ export default function App({ Component, pageProps }) {
     const inputOption = event.target.elements.option.value;
     setSelectedFilter(inputOption);
   }
+  // --------------
 
   function handleOnSubmitUpdateTransaction(event, transaction) {
     event.preventDefault();

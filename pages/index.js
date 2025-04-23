@@ -12,7 +12,7 @@ export default function HomePage({
   handleDeleteTransaction,
   handleOnChangeTypeView,
   handleOnSubmitFilterCategory,
-  handleOnSubmitUpdateTransaction
+  handleOnSubmitUpdateTransaction,
 }) {
   return (
     <>
@@ -24,16 +24,18 @@ export default function HomePage({
       <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
       <TransactionForm handleAddTransaction={handleAddTransaction} />
       <NoDataHint transactionsData={transactionsData} />
-      {transactionsData.map((element) => {
-        return (
-          <TransactionCard
-            key={element.id}
-            transaction={element}
-            handleDeleteTransaction={handleDeleteTransaction}
-            handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
-          />
-        );
-      })}
+      {transactionsData
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((element) => {
+          return (
+            <TransactionCard
+              key={element._id}
+              transaction={element}
+              handleDeleteTransaction={handleDeleteTransaction}
+              handleOnSubmitUpdateTransaction={handleOnSubmitUpdateTransaction}
+            />
+          );
+        })}
     </>
   );
 }

@@ -42,6 +42,18 @@ const StyledFlex = styled.div`
   margin-top: -10px;
 `;
 
+const StyledModal = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(80, 80, 80, 0.6);
+`;
+
 export {
   StyledTrashImage,
   StyledToggle,
@@ -50,4 +62,5 @@ export {
   StyledYesButton,
   StyledCenterText,
   StyledFlex,
+  StyledModal,
 };

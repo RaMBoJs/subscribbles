@@ -21,11 +21,19 @@ function useAppDataTransactions() {
     setTransactionsObjects([newTransactionObject, ...transactionsObjects]);
   }
 
+  function deleteTransaction(transaction) {
+    const filteredTransactionObjects = transactionsObjects.filter(
+      (element) => transaction._id !== element._id
+    );
+    setTransactionsObjects(filteredTransactionObjects);
+  }
+
   return {
     transactionsObjects,
     isLoadingTransactions,
     errorTransactions,
     addTransaction,
+    deleteTransaction,
   };
 }
 
