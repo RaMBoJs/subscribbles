@@ -13,10 +13,16 @@ const StyledTransactionForm = styled.form`
   min-width: 360px;
   padding: min(3rem, 2%);
   border-radius: 20px;
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  padding: 1rem;
+  border: 2px solid rgb(246, 237, 237);
 `;
 const StyledFormHeadline = styled.p`
   grid-area: description;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
   grid-column: 1 / -1;
   place-self: center;
   margin: 6px 6px 10px 6px;
@@ -28,8 +34,12 @@ const StyledCategoryInput = styled.select`
   width: 150px;
   border-radius: 10px;
   height: 30px;
-  border: none;
   margin: 6px;
+  color: rgb(98, 87, 84);
+  border: 2px solid rgb(246, 237, 237);
+  box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.05), 4px 4px 8px rgba(0, 0, 0, 0),
+    -4px -4px 8px rgba(255, 255, 255, 0);
 `;
 const StyledDateInput = styled.input`
   place-self: center;
@@ -37,8 +47,12 @@ const StyledDateInput = styled.input`
   width: 150px;
   border-radius: 10px;
   height: 30px;
-  border: none;
   margin: 6px;
+  color: rgb(98, 87, 84);
+  border: 2px solid rgb(246, 237, 237);
+  box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.05), 4px 4px 8px rgba(0, 0, 0, 0),
+    -4px -4px 8px rgba(255, 255, 255, 0);
 `;
 
 const StyledTypeRadio = styled.div`
@@ -49,6 +63,8 @@ const StyledTypeRadio = styled.div`
   background: none;
   border: none;
   margin: 6px;
+  font-size: 15px;
+  font-weight: bold;
 `;
 
 const StyledAmountInput = styled.input`
@@ -58,7 +74,15 @@ const StyledAmountInput = styled.input`
   border-radius: 10px;
   height: 30px;
   margin: 6px;
-  border: none;
+  color: rgb(98, 87, 84);
+  border: 2px solid rgb(246, 237, 237);
+  box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.05), 4px 4px 8px rgba(0, 0, 0, 0),
+    -4px -4px 8px rgba(255, 255, 255, 0);
+
+  &::placeholder {
+    color: rgb(98, 87, 84);
+  }
 `;
 
 const StyledSubmitButton = styled.button`
@@ -68,6 +92,14 @@ const StyledSubmitButton = styled.button`
   height: 40px;
   border-radius: 30px;
   margin: 5px;
+  color: black;
+  background: rgb(255, 255, 255);
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export {
   StyledSubmitButton,
@@ -76,5 +108,5 @@ export {
   StyledDateInput,
   StyledCategoryInput,
   StyledFormHeadline,
-  StyledTransactionForm
+  StyledTransactionForm,
 };
