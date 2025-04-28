@@ -12,10 +12,10 @@ function AccountBalance({ transactions }) {
 
   let iconColor = "#ffffff";
   if (total > 0) {
-    iconColor = "#228B22";
+    iconColor = "#a5dd91";
   }
   if (total < 0) {
-    iconColor = "#ff2800";
+    iconColor = "#f47b7b";
   }
 
   return (

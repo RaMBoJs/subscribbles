@@ -13,9 +13,6 @@ const StyledTransactionForm = styled.form`
   min-width: 360px;
   padding: min(3rem, 2%);
   border-radius: 20px;
-
-  // Neumorphen
-
   background: rgb(255, 255, 255);
   border-radius: 16px;
   box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
@@ -37,11 +34,7 @@ const StyledCategoryInput = styled.select`
   width: 150px;
   border-radius: 10px;
   height: 30px;
-  border: none;
   margin: 6px;
-
-  //Neumorphen
-
   color: rgb(98, 87, 84);
   border: 2px solid rgb(246, 237, 237);
   box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
@@ -54,11 +47,7 @@ const StyledDateInput = styled.input`
   width: 150px;
   border-radius: 10px;
   height: 30px;
-  border: none;
   margin: 6px;
-
-  //neumorphen
-
   color: rgb(98, 87, 84);
   border: 2px solid rgb(246, 237, 237);
   box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
@@ -76,7 +65,6 @@ const StyledTypeRadio = styled.div`
   margin: 6px;
   font-size: 15px;
   font-weight: bold;
-  
 `;
 
 const StyledAmountInput = styled.input`
@@ -86,10 +74,6 @@ const StyledAmountInput = styled.input`
   border-radius: 10px;
   height: 30px;
   margin: 6px;
-  border: none;
-  
-
-  // Neumorphen
   color: rgb(98, 87, 84);
   border: 2px solid rgb(246, 237, 237);
   box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
@@ -109,23 +93,13 @@ const StyledSubmitButton = styled.button`
   border-radius: 30px;
   margin: 5px;
   color: black;
-  
-
-  // Neumorphen
   background: rgb(255, 255, 255);
-  cursor: pointer;
   border: 1px solid #e8e8e8;
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; 
-
-
-
-
-
-
-
-
-
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export {
   StyledSubmitButton,

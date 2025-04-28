@@ -15,15 +15,10 @@ const StyledWrapper = styled.section`
   width: 100%;
   max-width: 500px;
   height: 200px;
-
-// Neumorphen 
-
-  background:rgb(255, 255, 255);
-  box-shadow: 8px 8px 16px #bebebe,
-  -8px -8px 16px #ffffff;
+  background: rgb(255, 255, 255);
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
   padding: 1rem;
   border: 2px solid rgb(246, 237, 237);
-
 `;
 
 const StyledIconWrapper = styled.div`
@@ -55,7 +50,6 @@ const StyledDescriptionTotal = styled.p`
   place-self: start;
   font-size: 1.5rem;
   font-weight: bold;
-
 `;
 
 const StyledBalance = styled.p`

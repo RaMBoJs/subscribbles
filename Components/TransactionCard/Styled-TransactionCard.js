@@ -2,24 +2,17 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const StyledTransactionCard = styled.div`
-  background-color: ${({ type }) =>
-    type === "expense" ? "rgb(244, 123, 123)" : "rgb(165, 221, 145)"};
   min-width: 360px;
   height: 215px;
   border: solid black 1px;
   border-radius: 15px;
   margin: 1rem auto;
   padding: 10px;
-
-
-// Neumorphen
-
-  background:rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
   border-radius: 16px;
-  box-shadow: 8px 8px 16px #bebebe,
-  -8px -8px 16px #ffffff;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
   padding: 1rem;
-  border: 2px solid rgb(246, 237, 237); 
+  border: 2px solid rgb(246, 237, 237);
 `;
 
 const StyledCatergory = styled.div`
@@ -50,12 +43,10 @@ const StyledIcon = styled(Image)`
   border-radius: 50px;
   width: 35px;
   height: 35px;
-  
-
 `;
 
 const StyledContainer = styled.div`
-  margin-top: 40px;  
+  margin-top: 40px;
 `;
 
 const StyledIconContainer = styled.div`
