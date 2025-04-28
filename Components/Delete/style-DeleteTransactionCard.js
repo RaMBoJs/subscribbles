@@ -14,20 +14,46 @@ const StyledDeleteCard = styled.div`
   height: 100px;
   width: 360px;
   background-color: rgb(234, 228, 228);
-  border: solid black 1px;
+  /* border: solid black 1px; */
   border-radius: 10px;
+
+//Neumorphen 
+  border: 2px solid rgb(246, 237, 237);
+  background-color:rgb(255, 255, 255); 
+  box-shadow:
+  6px 6px 10px rgb(207, 207, 207),    
+ -6px -6px 10px  rgba(141, 141, 141, 0.76); 
+
+
+
+
 `;
 
 const StyledCancelButton = styled.button`
   background-color: rgb(241, 236, 236);
   border-radius: 10px;
   border: "solid black 1px";
+//Neumorphen
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; 
+  
 `;
 
 const StyledYesButton = styled.button`
   background-color: rgb(239, 112, 112);
   border-radius: 10px;
   border: "solid black 1px";
+  background:  rgb(239, 112, 112);
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; 
+
+
+
 `;
 
 const StyledCenterText = styled.p`

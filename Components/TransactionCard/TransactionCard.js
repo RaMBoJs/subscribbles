@@ -49,8 +49,9 @@ function TransactionCard({
   }
 
   return (
-    <StyledTransactionCard type={transaction.type}>
+    <StyledTransactionCard>
       <StyledIcon
+        type={transaction.type}
         src={iconImageSrc}
         alt={`${transaction.category}-icon`}
         width="25"

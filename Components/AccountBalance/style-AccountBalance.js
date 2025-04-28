@@ -11,10 +11,19 @@ const StyledWrapper = styled.section`
   padding: 1rem;
   margin: 1rem auto;
   background-color: rgb(202, 183, 183);
-  border-radius: 12px;
+  border-radius: 16px;
   width: 100%;
   max-width: 500px;
-  height: 180px;
+  height: 200px;
+
+// Neumorphen 
+
+  background:rgb(255, 255, 255);
+  box-shadow: 8px 8px 16px #bebebe,
+  -8px -8px 16px #ffffff;
+  padding: 1rem;
+  border: 2px solid rgb(246, 237, 237);
+
 `;
 
 const StyledIconWrapper = styled.div`
@@ -39,12 +48,14 @@ const StyledIconSigma = styled.svg`
 const StyledCardTitle = styled.h2`
   grid-area: title;
   place-self: center;
+  font-size: 1.6rem;
 `;
 const StyledDescriptionTotal = styled.p`
   grid-area: description;
   place-self: start;
   font-size: 1.5rem;
   font-weight: bold;
+
 `;
 
 const StyledBalance = styled.p`
