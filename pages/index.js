@@ -5,6 +5,7 @@ import AccountBalance from "@/Components/AccountBalance/AccountBalance";
 import FilterTransaction from "@/Components/FilterTransactions/FilterTransactions";
 import IncomeExpanseView from "@/Components/IncomeExpanseView/IncomeExpanseView";
 import NoDataHint from "@/Components/NoDataHint/NoDataHint";
+import { Wrapper } from "@/Components/Wrapper/Wrapper";
 
 export default function HomePage({
   transactionsData,
@@ -19,11 +20,13 @@ export default function HomePage({
     <>
       <Header />
       <AccountBalance transactions={transactionsData} />
-      <FilterTransaction
-        handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
-        categoriesData={categoriesData}
-      />
-      <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
+      <Wrapper>
+        <FilterTransaction
+          handleOnSubmitFilterCategory={handleOnSubmitFilterCategory}
+          categoriesData={categoriesData}
+        />
+        <IncomeExpanseView handleOnChangeTypeView={handleOnChangeTypeView} />
+      </Wrapper>
       <TransactionForm handleAddTransaction={handleAddTransaction} />
       <NoDataHint transactionsData={transactionsData} />
       {transactionsData

@@ -55,7 +55,7 @@ export default function App({ Component, pageProps }) {
 
   function handleOnSubmitFilterCategory(event) {
     event.preventDefault();
-    const inputOption = event.target.elements.option.value;
+    const inputOption = event.target.value;
     setSelectedFilter(inputOption);
   }
   // --------------
