@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useSWR, { SWRConfig } from "swr";
+import useSWR from "swr";
 import swrConfig from "@/lib/fetch/swrConfig";
 
 function useAppDataTransactions() {
@@ -7,32 +7,50 @@ function useAppDataTransactions() {
     data: transactionsData,
     isLoading: isLoadingTransactions,
     error: errorTransactions,
-  } = useSWR(`/api/transactions`, swrConfig.fetcher, SWRConfig);
+    mutate,
+  } = useSWR(`/api/transactions`, swrConfig.fetcher);
 
   const [transactionsObjects, setTransactionsObjects] = useState([]);
 
   useEffect(() => {
-    if (transactionsData && Array.isArray(transactionsData)) {
-      setTransactionsObjects(transactionsData);
+    if (Array.isArray(transactionsData)) {
+      setTransactionsObjects((previousData) =>
+        JSON.stringify(previousData) === JSON.stringify(transactionsData)
+          ? previousData
+          : transactionsData
+      );
     }
   }, [transactionsData]);
 
   function addTransaction(newTransactionObject) {
-    setTransactionsObjects([newTransactionObject, ...transactionsObjects]);
+    setTransactionsObjects((previousData) => [
+      newTransactionObject,
+      ...previousData,
+    ]);
+    mutate(`/api/transactions`, transactionsObjects);
   }
 
   function deleteTransaction(transaction) {
-    const filteredTransactionObjects = transactionsObjects.filter(
-      (element) => transaction._id !== element._id
+    setTransactionsObjects((previousData) =>
+      previousData.filter((element) => element._id !== transaction._id)
     );
-    setTransactionsObjects(filteredTransactionObjects);
+    mutate(`/api/transactions`, (previousData) =>
+      previousData.filter((element) => element._id !== transaction._id)
+    );
   }
 
   function updateTransaction(transaction, dataBody) {
-    const updatedTransactionsObjects = transactionsObjects.map((element) =>
-      element._id === transaction._id ? dataBody : element
+    dataBody = { ...dataBody, _id: transaction._id };
+    setTransactionsObjects((previousData) =>
+      previousData.map((element) =>
+        element._id === transaction._id ? dataBody : element
+      )
     );
-    setTransactionsObjects(updatedTransactionsObjects);
+    mutate(`/api/transactions`, (previousData) =>
+      previousData.map((element) =>
+        element._id === transaction._id ? dataBody : element
+      )
+    );
   }
 
   return {
