@@ -31,7 +31,7 @@ export default function HomePage({
       <NoDataHint transactionsData={transactionsData} />
       {transactionsData
         .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map((element) => {
+        ?.map((element) => {
           return (
             <TransactionCard
               key={element._id}
