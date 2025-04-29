@@ -3,7 +3,7 @@ import TransactionForm from "@/Components/TransactionForm/TransactionForm";
 import Header from "@/Components/Header/Header";
 import AccountBalance from "@/Components/AccountBalance/AccountBalance";
 import FilterTransaction from "@/Components/FilterTransactions/FilterTransactions";
-import IncomeExpanseView from "@/Components/IncomeExpanseView/IncomeExpanseView";
+import IncomeExpanseView from "@/Components/IncomeExpanseView/IncomeExpenseView";
 import NoDataHint from "@/Components/NoDataHint/NoDataHint";
 import { Wrapper } from "@/Components/Wrapper/Wrapper";
 

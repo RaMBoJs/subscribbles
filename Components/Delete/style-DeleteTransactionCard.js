@@ -11,8 +11,8 @@ const StyledToggle = styled.div`
 `;
 
 const StyledDeleteCard = styled.div`
-  height: 100px;
-  width: 360px;
+  min-height: 100px;
+  min-width: 360px;
   background-color: rgb(234, 228, 228);
   border-radius: 10px;
   border: 2px solid rgb(246, 237, 237);
@@ -71,6 +71,7 @@ const StyledModal = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(80, 80, 80, 0.6);
+  z-index: 100;
 `;
 
 export {
