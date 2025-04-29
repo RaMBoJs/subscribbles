@@ -50,20 +50,6 @@ function TransactionCard({
 
   return (
     <StyledTransactionCard>
-      <StyledIcon
-        type={transaction.type}
-        src={iconImageSrc}
-        alt={`${transaction.category}-icon`}
-        width="25"
-        height="25"
-      />
-
-      <StyledContainer>
-        <StyledCatergory>{transaction.category}</StyledCatergory>
-        <StyledType>{transaction.type}</StyledType>
-      </StyledContainer>
-      <StyledAmount>{`${transaction.amount.toFixed(2)} €`}</StyledAmount>
-      <StyledDate>{transaction.date.slice(0, 10)}</StyledDate>
       <StyledIconContainer>
         <Delete
           transaction={transaction}
@@ -73,7 +59,21 @@ function TransactionCard({
           transaction={transaction}
           handleUpdateTransaction={handleUpdateTransaction}
         />
+        <StyledIcon
+          type={transaction.type}
+          src={iconImageSrc}
+          alt={`${transaction.category}-icon`}
+          width="25"
+          height="25"
+        />
       </StyledIconContainer>
+
+      <StyledContainer>
+        <StyledCatergory>{transaction.category}</StyledCatergory>
+        <StyledType>{transaction.type}</StyledType>
+      </StyledContainer>
+      <StyledAmount>{`${transaction.amount.toFixed(2)} €`}</StyledAmount>
+      <StyledDate>{transaction.date.slice(0, 10)}</StyledDate>
     </StyledTransactionCard>
   );
 }

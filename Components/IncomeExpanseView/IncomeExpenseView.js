@@ -1,10 +1,10 @@
-import { StyledSelect } from "./Styled-incomeExpanse";
+import { StyledSelect } from "./Styled-incomeExpense";
 
 function IncomeExpanseView({ handleOnChangeTypeView }) {
   const filterOptions = [
     { value: "all", label: "All Types" },
     { value: "income", label: "Income" },
-    { value: "expense", label: "Expanse" },
+    { value: "expense", label: "Expense" },
   ];
 
   return (

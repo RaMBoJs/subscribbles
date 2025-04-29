@@ -11,6 +11,7 @@ const StyledTransactionForm = styled.form`
   gap: 0.5rem;
   background-color: grey;
   min-width: 360px;
+  margin: 6px 12px 6px 12px;
   padding: min(3rem, 2%);
   border-radius: 20px;
   background: rgb(255, 255, 255);
@@ -91,12 +92,13 @@ const StyledSubmitButton = styled.button`
   width: 150px;
   height: 40px;
   border-radius: 30px;
-  margin: 5px;
+  margin: 6px;
   color: black;
   background: rgb(255, 255, 255);
   border: 1px solid #e8e8e8;
   transition: all 0.3s;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+
   &:hover {
     cursor: pointer;
   }

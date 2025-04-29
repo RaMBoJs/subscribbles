@@ -10,6 +10,7 @@ const StyledModalBackground = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(80, 80, 80, 0.6);
+  z-index: 100;
 `;
 
 const StyledUpdateForm = styled.form`

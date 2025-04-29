@@ -1,35 +1,21 @@
 import styled from "styled-components";
 
-const StyledWrapper = styled.section`
+const StyledWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     ". . symbol"
     "title title title"
     "description amount amount";
-
-  padding: 1rem;
-  margin: 1rem auto;
+  position: relative;
+  min-width: 360px;
+  min-height: 140px;
+  margin: 6px 12px 6px 12px;
   background-color: rgb(202, 183, 183);
   border-radius: 16px;
-  width: 100%;
-  max-width: 500px;
-  height: 200px;
   background: rgb(255, 255, 255);
   box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
-  padding: 1rem;
   border: 2px solid rgb(246, 237, 237);
-`;
-
-const StyledIconWrapper = styled.div`
-  grid-area: symbol;
-  justify-self: end;
-  align-self: start;
-  border: 1px solid black;
-  background-color: ${({ $iconColor }) => $iconColor};
-  width: 45px;
-  height: 35px;
-  border-radius: 30px;
 `;
 
 const StyledIconSigma = styled.svg`
@@ -42,28 +28,30 @@ const StyledIconSigma = styled.svg`
 
 const StyledCardTitle = styled.h2`
   grid-area: title;
-  place-self: center;
-  font-size: 1.6rem;
+  justify-self: center;
+  font-size: 1.4rem;
+  margin: 0px;
 `;
 const StyledDescriptionTotal = styled.p`
   grid-area: description;
-  place-self: start;
-  font-size: 1.5rem;
+  justify-self: start;
+  font-size: 1.2rem;
   font-weight: bold;
+  margin-left: 12px;
 `;
 
 const StyledBalance = styled.p`
   grid-area: amount;
-  place-self: end;
-  font-size: 1.5rem;
+  justify-self: end;
+  font-size: 1.2rem;
   font-weight: bold;
+  margin-right: 12px;
 `;
 
 export {
   StyledWrapper,
   StyledBalance,
   StyledIconSigma,
-  StyledIconWrapper,
   StyledCardTitle,
   StyledDescriptionTotal,
 };
