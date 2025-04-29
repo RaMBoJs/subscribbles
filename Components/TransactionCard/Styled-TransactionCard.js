@@ -3,16 +3,15 @@ import Image from "next/image";
 
 const StyledTransactionCard = styled.div`
   min-width: 360px;
-  height: 215px;
+  min-height: 180px;
   border: solid black 1px;
   border-radius: 15px;
-  margin: 1rem auto;
-  padding: 10px;
+  margin: 6px 12px 6px 12px;
   background: rgb(255, 255, 255);
   border-radius: 16px;
   box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
-  padding: 1rem;
   border: 2px solid rgb(246, 237, 237);
+  padding: 1rem 1rem 0rem 1rem;
 `;
 
 const StyledCatergory = styled.div`
@@ -22,36 +21,45 @@ const StyledCatergory = styled.div`
 
 const StyledType = styled.div`
   font-size: 20px;
-  margin-top: 2px;
+  margin: 2px 0px 0px 0px;
 `;
 
 const StyledAmount = styled.div`
   font-weight: bold;
   font-size: 25px;
   text-align: end;
-  margin-top: -45px;
 `;
 
 const StyledDate = styled.div`
-  margin-top: 20px;
+  font-size: 0.8rem;
+  margin: 4px 0px 0px 0px;
+    position: absolute;
+  transform: translate(0px, -26px);
 `;
 
 const StyledIcon = styled(Image)`
-  margin-left: 310px;
   background-color: ${({ type }) =>
     type === "expense" ? "rgb(244, 123, 123)" : "rgb(165, 221, 145)"};
   border-radius: 50px;
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  transform: translate(290px, -6px);
+  border: 2px solid rgb(246, 237, 237);
+  box-shadow: inset 2px 2px 4px rgba(34, 34, 34, 0.62),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.05), 4px 4px 8px rgba(0, 0, 0, 0),
+    -4px -4px 8px rgba(255, 255, 255, 0);
+  z-index: 1;
 `;
 
 const StyledContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const StyledIconContainer = styled.div`
   display: flex;
-  margin: 5px 0px 0px 0px;
+  margin: 6px 0px 6px 0px;
+  gap: 12px;
 `;
 
 export {

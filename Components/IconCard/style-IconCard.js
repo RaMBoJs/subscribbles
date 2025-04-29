@@ -3,13 +3,13 @@ import styled from "styled-components";
 const StyledIconWrapper = styled.div`
   grid-area: symbol;
   justify-self: end;
-  transform: translate(0px, -28px);
+  transform: translate(-10px, -10px);
   text-align: center;
-  border: 1px solid black;
   background-color: ${({ $iconColor }) => $iconColor};
   width: 55px;
   height: 30px;
   border-radius: 30px;
+  border: 2px solid rgb(246, 237, 237);
 `;
 
 const StyledIconSigma = styled.svg`
