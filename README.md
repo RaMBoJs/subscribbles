@@ -1,4 +1,4 @@
-# Finora
+# Finory
 [Finory](https://subscribbles.rambo-js.com/) is a modern money management app that helps you easily track and organize your income and expenses.
 This project was developed as part of our collaborative coursework.
 
